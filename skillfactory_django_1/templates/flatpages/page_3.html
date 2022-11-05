@@ -1,12 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>{{flatpage.title}}</title>
-</head>
-<body>
-<h1>{{flatpage.title}}</h1>
-<h2>{{flatpage.content}}</h2>
-<h3>{{flatpage.content}}</h3>
-</body>
-</html>
+{% extends 'flatpages/default.html' %}
+{% block content %}
+<hr>
+{{ flatpages.content }}
+<hr>
+<h1>Никто кроме админа не пройдёт!</h1>
+<hr>
+{% endblock content %}
