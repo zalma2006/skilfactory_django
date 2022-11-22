@@ -1,0 +1,123 @@
+python manage.py shell
+from D5.models import *
+User.objects.create_user('user_1')
+User.objects.create_user('user_2')
+Author.objects.create(rank_user=0, person_id_id=1)
+Author.objects.create(rank_user=0, person_id_id=2)
+Category.objects.create(name_category='Спорт')
+Category.objects.create(name_category='Политика')
+Category.objects.create(name_category='Образование')
+Category.objects.create(name_category='Военная обстановка')
+Post.objects.create(author_id_id=1, changes='nws', title='Эрдоган заявил о «бесконечной цене» для Европы из-за изоляции России', text='Европейские страны вместе с Польшей все больше сталкиваются с «бесконечными» издержками изоляции России, считает Эрдоган. Кремль отвергает суждения об изоляции страны, Путин отмечал, что «жестко изолировать» невозможно никого')
+PostCategory.objects.create(category_id_id=2, post_id_id=1)
+Post.objects.create(author_id_id=2, changes='art', title='Участник СВО из ХМАО поблагодарил жителей за помощь',text='Участник спецоперации, находящийся в отпуске, поблагодарил жителей поселка Высокий (ХМАО) за помощь военным. Мужчина присутствовал на встрече горожан с главой Мегиона Олегом Дейнека, сообщается на странице мэрии в соцсети «ВКонтакте».«Без нашей общей поддержки парням будет очень сложно защищать наш общий мир. Вы не поверите, насколько письма школьников трогают сердца солдат, которые понимают, что в ответе за их будущее. Спасибо вам за все!» — сказал жителям участник СВО. Он также поздравил присутствующих матерей с предстоящим праздником от имени военнослужащих.')
+PostCategory.objects.create(category_id_id=4, post_id_id=3)
+Post.objects.create(author_id_id=1, changes='art', title='Правительство утвердило квоты приема на целевое обучение в вузах на 2023 год',text='Так, по специальности "Педиатрия" (специалитет) их доля составит 76 процентов, по "Лечебному делу" (специалитет) - 75 процентов. А по самым дефицитным специальностям ординатуры - 100 процентов. Для будущих специалистов в области самолето- и вертолетостроения, систем обеспечения движения поездов и эксплуатации железных дорог выделены 70 процентов целевых мест. По таким специальностям, как "Радиоэлектронные системы и комплексы", "Строительство железных дорог, мостов и транспортных тоннелей", "Специальные радиотехнические системы", "Проектирование авиационных и ракетных двигателей" целевые квоты составят 60 процентов.')
+PostCategory.objects.create(category_id_id=3, post_id_id=4)
+Post.objects.create(author_id_id=2, changes='nws', title='Кейну запретили носить инклюзивную повязку на чемпионате мира',text='Международная федерация футбола (ФИФА) запретила капитану сборной Англии Гарри Кейну и другим игрокам носить повязку One Love (Одна любовь) на чемпионате мира в Катаре в поддержку инклюзивности, сообщает Telegraph. Ранее несколько сборных присоединились к акции One Love на чемпионате мира в поддержку инклюзивности и против дискриминации. По информации источника, если Кейн выйдет с этой повязкой на матч, то арбитры могут сразу же показать футболисту желтую карточку.')
+PostCategory.objects.create(category_id_id=1, post_id_id=5)
+c = Comment(post_id_id = 1, user_id_id = 2, text_comment='Страшно жить!')
+c.save()
+c = Comment(post_id_id = 3, user_id_id = 1, text_comment='Молодец')
+c.save()
+Comment.objects.create(post_id_id = 4, user_id_id = 2, text_comment='Хорошо побольше бы льгот')
+Comment.objects.create(post_id_id = 5, user_id_id = 1, text_comment='Не понравилось')
+Comment.objects.create(post_id_id = 3, user_id_id = 2, text_comment='Льготы это хорошо')
+>>> rank_post_1 = Post.objects.get(pk=1)
+>>> rank_post_1
+<Post: Post object (1)>
+>>> rank_post_1.like()
+>>> rank_post_1.like()
+>>> rank_post_1.like()
+>>> rank_post_1.like()
+>>> rank_post_1.like()
+>>> rank_post_1.rank_post
+5
+>>> rank_post_1.dislike()
+>>> rank_post_1.rank_post
+4
+>>> rank_post_2 = Post.objects.get(pk=3)
+>>> rank_post_2.dislike()
+>>> rank_post_2.dislike()
+>>> rank_post_2.like()
+>>> rank_post_2.like()
+>>> rank_post_2.like()
+>>> rank_post_2
+<Post: Post object (3)>
+>>> rank_post_2.rank_post
+1
+>>> rank_post_3 = Post.objects.get(pk=4)
+>>> rank_post_3.like()
+>>> rank_post_3.like()
+>>> rank_post_3.like()
+>>> rank_post_3.like()
+>>> rank_post_3.like()
+>>> rank_post_3.like()
+>>> rank_post_3.like()
+>>> rank_post_3.rank_post
+7
+>>> rank_post_4 = Post.objects.filter(title__startswith='Кейну')
+>>> rank_post_4.values('changes', 'dt_create', 'title')
+<QuerySet [{'changes': 'nws', 'dt_create': datetime.datetime(2022, 11, 20, 20, 31, 35, 424446, tzinfo=datetime.timezone.utc), 'title': 'Кейну запретили носить инклюзивную повязку на чемпионате мира'}]>
+<QuerySet [<Post: Post object (5)>]>
+>>> rank_post_4 = Post.objects.get(pk=5)
+>>> rank_post_4.preview()
+'Международная федерация футбола (ФИФА) запретила капитану сборной Англии Гарри Кейну и другим игрокам носить повязку One Lov...'
+>>> rank_post_4.dislike()
+>>> rank_post_4.dislike()
+>>> rank_post_4.dislike()
+>>> rank_post_4.dislike()
+>>> rank_post_4.dislike()
+>>> rank_post_4.dislike()
+>>> rank_post_4.rank_post
+-6
+>>> PostCategory.objects.create(category_id_id = 2, post_id_id = 4)
+>>> com_1 = Comment.objects.get(pk=1)
+>>> com_1.dislike()
+>>> com_1.dislike()
+>>> com_1.dislike()
+>>> com_1.like()
+>>> com_1.like()
+>>> com_1.text_comment
+'Страшно жить!'
+>>> com_1.rank_comment
+-1
+>>> Comment.objects.get(pk=1).like()
+>>> Comment.objects.get(pk=1).like()
+>>> com_1.rank_comment
+-1
+>>> Comment.objects.get(pk=1).rank_comment
+1
+>>> Comment.objects.get(pk=2).dislike()
+>>> Comment.objects.get(pk=2).dislike()
+>>> Comment.objects.get(pk=3).dislike()
+>>> Comment.objects.get(pk=3).dislike()
+>>> Comment.objects.get(pk=3).dislike()
+>>> Comment.objects.get(pk=4).like()
+>>> Comment.objects.get(pk=4).like()
+>>> [print(r) for r in Comment.objects.all().values('pk','rank_comment')]
+{'pk': 1, 'rank_comment': 1}
+{'pk': 2, 'rank_comment': -2}
+{'pk': 3, 'rank_comment': -3}
+{'pk': 4, 'rank_comment': 2}
+{'pk': 5, 'rank_comment': 0}
+[None, None, None, None, None]
+user_1, user_2 = Author.objects.get(pk=1), Author.objects.get(pk=2)
+>>> user_1.id, user_1.person_id_id
+(1, 1)
+>>> user_2.id, user_2.person_id_id
+(2, 2)
+>>> user_1.update_rating()
+>>> user_2.update_rating()
+>>> user_1.rank_user, user_2.rank_user
+(5, -4)
+>>> Author.objects.order_by('-rank_user')[0].person_id
+<User: user_1>
+>>> Post.objects.filter(pk=Post.objects.order_by('-rank_post')[0].id).values('dt_create', 'title')
+<QuerySet [{'dt_create': datetime.datetime(2022, 11, 20, 20, 23, 46, 478217, tzinfo=datetime.timezone.utc), 'title': 'Правительство утвердило квоты приема на целевое обучение в вузах на 2023 год'}]>
+>>> Post.objects.get(pk=Post.objects.order_by('-rank_post')[0].id).preview()
+'Так, по специальности "Педиатрия" (специалитет) их доля составит 76 процентов, по "Лечебному делу" (специалитет) - 75 процен...'
+>>> Author.objects.get(person_id=list(Post.objects.filter(pk=Post.objects.order_by('-rank_post')[0].id).values('author_id')[0].values())[0]).person_id
+<User: user_1>
+>>> Post.objects.filter(comment__post_id=3).values('comment__dt_text_comment', 'comment__user_id', 'rank_post', 'comment__text_comment')
+<QuerySet [{'comment__dt_text_comment': datetime.datetime(2022, 11, 21, 18, 59, 49, 441034, tzinfo=datetime.timezone.utc), 'comment__user_id': 1, 'rank_post': 1, 'comment__text_comment': 'Молодец'}, {'comment__dt_text_comment': datetime.datetime(2022, 11, 21, 19, 5, 22, 798980, tzinfo=datetime.timezone.utc), 'comment__user_id': 2, 'rank_post': 1, 'comment__text_comment': 'Льготы это хорошо'}]>
