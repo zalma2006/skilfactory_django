@@ -1,6 +1,5 @@
 from django.db import models
 from django.contrib.auth.models import User
-from django.db.models import Sum
 from annoying.fields import AutoOneToOneField
 
 
@@ -48,6 +47,9 @@ class Post(models.Model):
 
     def preview(self):
         return f'{self.text[:124]}...'
+
+    def __str__(self):
+        return f'{self.changes}: {self.title}, \n ({self.text})'
 
 
 class PostCategory(models.Model):

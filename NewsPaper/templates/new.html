@@ -1,0 +1,23 @@
+{% extends 'flatpages/default.html' %}
+{% block title %}
+News
+{% endblock title %}
+
+{% block content %}
+{% if new %}
+    <table>
+        <tr>
+            <td>Заголовок</td>
+            <td>Содержание</td>
+            <td>Дата публикации</td>
+        </tr>
+        <tr>
+            <td>{{new.title}}</td>
+            <td>{{new.text}}</td>
+            <td>{{new.dt_create|date:'d.m.Y'}}</td>
+        </tr>
+    </table>
+{% else %}
+    <h3>Нет такой новости</h3>
+{% endif %}
+{% endblock content %}
