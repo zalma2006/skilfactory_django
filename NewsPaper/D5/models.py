@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from annoying.fields import AutoOneToOneField
+from django.urls import reverse
 
 
 class Author(models.Model):
@@ -50,6 +51,9 @@ class Post(models.Model):
 
     def __str__(self):
         return f'{self.changes}: {self.title}, \n ({self.text})'
+
+    def get_absolute_url(self):
+        return reverse('news')
 
 
 class PostCategory(models.Model):

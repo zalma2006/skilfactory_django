@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'D5',
     'django.contrib.sites',
     'django.contrib.flatpages',
+    'django_filters',
 
 ]
 
