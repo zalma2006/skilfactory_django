@@ -104,7 +104,7 @@ class BaseRegisterForm(UserCreationForm):
                   "password1",
                   "password2",)
 
-    def save(self, commit=True):  # пробовал достать объект пользователя
+    def save(self, commit=True):
         user = super().save()
         basic_group = Group.objects.get(name='common')
         basic_group.user_set.add(user)
