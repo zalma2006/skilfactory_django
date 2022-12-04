@@ -104,8 +104,8 @@ class BaseRegisterForm(UserCreationForm):
                   "password1",
                   "password2",)
 
-    def saved(self):  # пробовал достать объект пользователя
-        user = self.Meta.model
+    def save(self, commit=True):  # пробовал достать объект пользователя
+        user = super().save()
         basic_group = Group.objects.get(name='common')
         basic_group.user_set.add(user)
         return user
