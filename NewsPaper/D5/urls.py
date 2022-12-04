@@ -1,6 +1,8 @@
 from django.urls import path
 # Импортируем созданное нами представление
-from .views import NewsLists, NewsDetail, NewsListsSearch, NewsCreate, NewsUpdate, NewsDelete
+from .views import (NewsLists, NewsDetail, NewsListsSearch, NewsCreate,
+                    NewsUpdate, NewsDelete, BaseRegisterView)
+from django.contrib.auth.views import LoginView, LogoutView
 
 urlpatterns = [
     # path — означает путь.
@@ -14,5 +16,8 @@ urlpatterns = [
     path('search/', NewsListsSearch.as_view(), name='search'),
     path('create/', NewsCreate.as_view(), name='create'),
     path('<int:pk>/update', NewsUpdate.as_view(), name='news_update'),
-    path('<int:pk>/delete', NewsDelete.as_view(), name='news_delete')
+    path('<int:pk>/delete', NewsDelete.as_view(), name='news_delete'),
+    path('login/', LoginView.as_view(template_name='login.html'), name='login'),
+    path('logout/', LogoutView.as_view(template_name='logout.html'), name='logout'),
+    path('signup/', BaseRegisterView.as_view(template_name='signup.html'), name='signup')
 ]

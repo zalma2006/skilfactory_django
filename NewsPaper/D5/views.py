@@ -5,6 +5,9 @@ from .models import Post
 from .filters import NewsFilter
 from .forms import NewsForm
 from django.urls import reverse_lazy
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.models import User
+from .models import BaseRegisterForm
 
 
 class NewsLists(ListView):
@@ -49,16 +52,28 @@ class NewsListsSearch(ListView):
         context['filterset'] = self.filterset
         return context
 
-class NewsCreate(CreateView):
+
+class NewsCreate(LoginRequiredMixin, CreateView):
     form_class = NewsForm
     model = Post
     template_name = 'news_edit.html'
 
-class NewsUpdate(UpdateView):
+
+class NewsUpdate(LoginRequiredMixin, UpdateView):
     form_class = NewsForm
     model = Post
     template_name = 'news_edit.html'
-class NewsDelete(DeleteView):
+
+
+class NewsDelete(LoginRequiredMixin, DeleteView):
     model = Post
     template_name = 'news_edit.html'
     success_url = reverse_lazy('news')
+
+
+class BaseRegisterView(CreateView):
+    model = User
+    form_class = BaseRegisterForm
+    success_url = '/news/'
+
+
