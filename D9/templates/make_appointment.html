@@ -7,7 +7,7 @@
 </head>
 <body>
 <h1>Сделаем напоминание</h1>
-<form action="{% url 'D9:make_appointment' %}" method="post"
+<form action="{% url 'make_appointment' %}" method="post"
       enctype="multipart/form-data">
     {% csrf_token %}
     <label for="client_name">Ваше имя</label>

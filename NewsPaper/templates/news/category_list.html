@@ -10,8 +10,11 @@ News
 <h1>Все новости</h1>
 {% if news %}
 <h1>Количество новостей: {{news|length}}</h1>
+<!--    {% if is_not_subscriber %}-->
+<!--    <p class="text-center"><a href="{}" class="btn btn-secondary btn-sm">Подписаться</a> </p>-->
+<!--    {% endif %}-->
 <!--<ul class="list-group list-group-flush">-->
-<!--    {% for new1 in news %}-->
+<!--    {% for new1 in category_news_list %}-->
 <!--    <li class="list-group-item">-->
 <!--        <small class="fw-bold">{{ new1.dt_create|date:'d.m.Y' }}</small>-->
 <!--        <a href="{% url 'new' new1.id %}">{{ new1.title }}</a>-->
@@ -32,7 +35,7 @@ News
         <td>Содержание</td>
         <td>Категория</td>
     </tr>
-    {% for new1 in news %}
+    {% for new1 in category_news_list %}
     <tr>
         <td>{{ new1.title }}</td> <!-- удаляем цензор с прошлого задания  <td>{{ new1.title|censor }}</td> -->
         <td>{{ new1.dt_create|date:'d.m.Y' }}</td>
