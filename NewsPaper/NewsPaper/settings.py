@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 import os
 from pathlib import Path
+from dotenv import load_dotenv
+load_dotenv()
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -38,7 +40,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     'django.contrib.sites',
-    'D5',
+    'D5.apps.D5Config',
     'django.contrib.flatpages',
     'django_filters',
     'allauth',
@@ -151,3 +153,12 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 STATICFILES_DIRS = [
     BASE_DIR / "static"
 ]
+
+SITE_URL = 'http://127.0.0.1:8000'
+
+EMAIL_HOST = 'smtp.yandex.ru'  # адрес сервера Яндекс-почты для всех один и тот же
+EMAIL_PORT = 465  # порт smtp сервера тоже одинаковый
+EMAIL_HOST_USER = str(os.getenv('EMAIL_HOST_USER'))  # ваше имя пользователя, например, если ваша почта user@yandex.ru, то сюда надо писать user, иными словами, это всё то что идёт до собаки
+EMAIL_HOST_PASSWORD = str(os.getenv('EMAIL_PASS'))  # пароль от почты
+DEFAULT_FROM_EMAIL = str(os.getenv('FROM_EMAIL'))
+EMAIL_USE_SSL = True

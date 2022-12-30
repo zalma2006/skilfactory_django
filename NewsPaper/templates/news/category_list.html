@@ -8,11 +8,12 @@ News
 
 {% block content %}
 <h1>Все новости</h1>
-{% if news %}
-<h1>Количество новостей: {{news|length}}</h1>
-<!--    {% if is_not_subscriber %}-->
-<!--    <p class="text-center"><a href="{}" class="btn btn-secondary btn-sm">Подписаться</a> </p>-->
-<!--    {% endif %}-->
+{% if category_news_list %}
+<h1>Количество новостей: {{category_news_list|length}}</h1>
+    {% if is_not_subscriber %}
+    <p class="text-center"><a href="{% url 'subscribe' category.id %}"
+                              class="btn btn-secondary btn-sm">Подписаться</a> </p>
+    {% endif %}
 <!--<ul class="list-group list-group-flush">-->
 <!--    {% for new1 in category_news_list %}-->
 <!--    <li class="list-group-item">-->

@@ -100,7 +100,7 @@ def upgrade_me(request):
 
 class CategoryListView(ListView):
     model = Post
-    template_name = 'news/category_list.html',
+    template_name = 'news/category_list.html'
     context_object_name = 'category_news_list'
 
     def get_queryset(self):
@@ -118,8 +118,9 @@ class CategoryListView(ListView):
 @login_required
 def subscribe(request, pk):
     user = request.user
-    category = Category.objacts.get(id=pk)
+    category = Category.objects.get(id=pk)
     category.subscribers.add(user)
+    print(category)
 
     message = 'Вы успешно подписались на рассылку новостей!'
 
