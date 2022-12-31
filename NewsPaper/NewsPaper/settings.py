@@ -46,8 +46,8 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
-    # ... include the providers you want to enable:
     'allauth.socialaccount.providers.google',
+    'django_apscheduler'
 ]
 AUTHENTICATION_BACKENDS = [
     # Needed to login by username in Django admin, regardless of `allauth`
@@ -158,7 +158,10 @@ SITE_URL = 'http://127.0.0.1:8000'
 
 EMAIL_HOST = 'smtp.yandex.ru'  # адрес сервера Яндекс-почты для всех один и тот же
 EMAIL_PORT = 465  # порт smtp сервера тоже одинаковый
-EMAIL_HOST_USER = str(os.getenv('EMAIL_HOST_USER'))  # ваше имя пользователя, например, если ваша почта user@yandex.ru, то сюда надо писать user, иными словами, это всё то что идёт до собаки
+EMAIL_HOST_USER = str(os.getenv('EMAIL_HOST_USER'))  # ваше имя пользователя, например, если ваша почта user@yandex.ru
 EMAIL_HOST_PASSWORD = str(os.getenv('EMAIL_PASS'))  # пароль от почты
 DEFAULT_FROM_EMAIL = str(os.getenv('FROM_EMAIL'))
 EMAIL_USE_SSL = True
+
+APSCHEDULER_DATETIME_FORMAT = "N j, Y, f:s a"
+APSCHEDULER_RUN_NOW_TIMEOUT = 25  # Seconds

@@ -3,8 +3,8 @@ from django.db.models.signals import m2m_changed
 from django.dispatch import receiver
 from django.template.loader import render_to_string
 
-from NewsPaper.NewsPaper import settings
-from NewsPaper.D5.models import PostCategory
+from django.conf import settings
+from D5.models import PostCategory
 
 
 def send_notifications(preview, pk, title, subscribers):

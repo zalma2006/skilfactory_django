@@ -25,6 +25,9 @@ class Author(models.Model):
         self.rank_user = post_rank_sum + sum_comment + sum_comment_art
         self.save()
 
+    def __str__(self):
+        return f'{self.person_id}'
+
 
 class Category(models.Model):
     name_category = models.CharField(unique=True, max_length=255)
@@ -61,7 +64,10 @@ class Post(models.Model):
         return f'{self.changes}: {self.title}, \n ({self.text})'
 
     def get_absolute_url(self):
-        return reverse('news')
+        return reverse(f'/news/{self.id}')
+
+    def get_username(self):
+        return f'{Author.person_id}'
 
 
 class PostCategory(models.Model):

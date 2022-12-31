@@ -8,6 +8,7 @@ News
 
 {% block content %}
 <h1>Все новости</h1>
+<h1>Вы зашли как {{ news.get_username }}</h1>
 {% if news %}
 <h1>Количество новостей: {{news|length}}</h1>
 <!--<ul class="list-group list-group-flush">-->
