@@ -28,6 +28,7 @@ News
 <!--</ul>-->
 <table>
     <tr>
+        <td>id статьи</td>
         <td>Заголовок</td>
         <td>Дата новости</td>
         <td>Содержание</td>
@@ -35,6 +36,7 @@ News
     </tr>
     {% for new1 in news %}
     <tr>
+        <td>{{ new1.id }}</td>
         <td>{{ new1.title }}</td> <!-- удаляем цензор с прошлого задания  <td>{{ new1.title|censor }}</td> -->
         <td>{{ new1.dt_create|date:'d.m.Y' }}</td>
         <td>{{ new1.text }}</td> <!-- удаляем цензор с прошлого задания  <td>{{ new1.text|censor }}</td> -->

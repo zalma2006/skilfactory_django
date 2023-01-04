@@ -1,6 +1,9 @@
 # Импортируем класс, который говорит нам о том,
 # что в этом представлении мы будем выводить список объектов из БД
+import datetime
+
 from django.contrib.auth.decorators import login_required
+from django.http import HttpResponse
 from django.shortcuts import get_object_or_404, render, redirect
 from django.views.generic import (ListView, DetailView, CreateView, UpdateView, DeleteView,
                                   TemplateView)
@@ -11,6 +14,7 @@ from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.models import User, Group
 from .models import BaseRegisterForm, Category
+from django.views import View
 
 
 class NewsLists(ListView):
@@ -24,7 +28,7 @@ class NewsLists(ListView):
     # Это имя списка, в котором будут лежать все объекты.
     # Его надо указать, чтобы обратиться к списку объектов в html-шаблоне.
     context_object_name = 'news'
-    paginate_by = 5
+    paginate_by = 10
 
 
 class NewsDetail(DetailView):
@@ -125,3 +129,5 @@ def subscribe(request, pk):
     message = 'Вы успешно подписались на рассылку новостей!'
 
     return render(request, 'news/subscribe.html', {'category': category, 'message': message})
+
+
