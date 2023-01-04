@@ -12,6 +12,6 @@ app.autodiscover_tasks()
 app.conf.beat_schedule = {
     'send_news_every_weeks': {
         'task': 'D5.tasks.send_art_with_time',
-        'schedule': crontab(),
+        'schedule': crontab(minute='0', hour='8', day_of_week='mon'),
     },
 }
