@@ -65,7 +65,6 @@ class Post(models.Model):
 
     def get_absolute_url(self):
         return reverse(f'news')
-        # return reverse('news', kwargs={'pk': str(self.id)})
 
     def get_username(self):
         return f'{Author.person_id}'

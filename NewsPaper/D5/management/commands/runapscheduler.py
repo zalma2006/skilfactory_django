@@ -23,7 +23,6 @@ def my_job():
     posts = Post.objects.filter(dt_create__gte=last_week)
     categories = set(posts.values_list('category_id__name_category', flat=True))
     subscribers = Category.objects.filter(name_category__in=categories).values_list('subscribers__email', flat=True)
-    print(subscribers)
 
     html_content = render_to_string(
         'daily_post.html',
