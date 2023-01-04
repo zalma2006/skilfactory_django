@@ -3,7 +3,6 @@
 import datetime
 
 from django.contrib.auth.decorators import login_required
-from django.http import HttpResponse
 from django.shortcuts import get_object_or_404, render, redirect
 from django.views.generic import (ListView, DetailView, CreateView, UpdateView, DeleteView,
                                   TemplateView)
@@ -14,7 +13,7 @@ from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.models import User, Group
 from .models import BaseRegisterForm, Category
-from django.views import View
+from django.core.cache import cache
 
 
 class NewsLists(ListView):
@@ -31,16 +30,29 @@ class NewsLists(ListView):
     paginate_by = 10
 
 
+# class NewsDetail(DetailView):
+#     model = Post
+#
+#     template_name = 'new.html'
+#
+#     context_object_name = 'new'
+#
+#     pk_url_kwarg = 'id'
+
 class NewsDetail(DetailView):
-    model = Post
-
     template_name = 'new.html'
-
     context_object_name = 'new'
+    queryset = Post.objects.all()
 
-    pk_url_kwarg = 'id'
+    def get_object(self, *args, **kwargs):
+        obj = cache.get(f'new-{self.kwargs["pk"]}')
+        print(obj)
 
-
+        if not obj:
+            obj = super().get_object(queryset=self.queryset)
+            cache.set(f'new-{self.kwargs["pk"]}', obj)
+            print(obj)
+        return obj
 class NewsListsSearch(ListView):
     model = Post
     ordering = 'dt_create'

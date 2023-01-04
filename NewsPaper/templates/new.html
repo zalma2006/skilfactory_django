@@ -1,17 +1,19 @@
 {% extends 'flatpages/default.html' %}
 {% block title %}
-News
+New
 {% endblock title %}
 
 {% block content %}
 {% if new %}
     <table>
         <tr>
+            <td>id Новости</td>
             <td>Заголовок</td>
             <td>Содержание</td>
             <td>Дата публикации</td>
         </tr>
         <tr>
+            <td>{{ new.id }}</td>
             <td>{{new.title}}</td>
             <td>{{new.text}}</td>
             <td>{{new.dt_create|date:'d.m.Y'}}</td>
