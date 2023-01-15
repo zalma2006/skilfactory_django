@@ -1,6 +1,7 @@
 <!--  наследуемся от шаблона default.html, который мы создавали для flatpages -->
 {% extends 'flatpages/default.html' %}
 {% load custom_filters %}
+{% load  hide_forbidden %}
 
 {% block title %}
 News
@@ -38,7 +39,7 @@ News
         <td>{{ new1.id }}</td>
         <td>{{ new1.title }}</td> <!-- удаляем цензор с прошлого задания  <td>{{ new1.title|censor }}</td> -->
         <td>{{ new1.dt_create|date:'d.m.Y' }}</td>
-        <td>{{ new1.text }}</td> <!-- удаляем цензор с прошлого задания  <td>{{ new1.text|censor }}</td> -->
+        <td>{{ new1.text|hide_forbidden }}</td> <!-- удаляем цензор с прошлого задания  <td>{{ new1.text|censor }}</td> -->
                     <td>{% for category in new1.category_id.all %}
             <a href="{% url 'category_list' category.id %}">{{ category }}</a>
                {% endfor %}</td>

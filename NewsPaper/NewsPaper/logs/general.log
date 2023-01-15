@@ -1,0 +1,90 @@
+2023-01-15 14:14:35,724 INFO Watching for file changes with StatReloader
+2023-01-15 14:14:41,416 WARNING "GET / HTTP/1.1" 404 2382
+2023-01-15 14:18:09,712 WARNING "GET / HTTP/1.1" 404 2382
+2023-01-15 14:18:54,518 INFO /home/maks/PycharmProjects/skilfactory_django/NewsPaper/NewsPaper/settings.py changed, reloading.
+INFO 2023-01-15 14:18:54,776 Watching for file changes with StatReloader /home/maks/PycharmProjects/skilfactory_django/venv/lib/python3.10/site-packages/django/utils/autoreload.py
+WARNING 2023-01-15 14:19:00,427 "GET / HTTP/1.1" 404 2382 /home/maks/PycharmProjects/skilfactory_django/venv/lib/python3.10/site-packages/django/core/servers/basehttp.py
+INFO 2023-01-15 15:07:06,298 /home/maks/PycharmProjects/skilfactory_django/NewsPaper/NewsPaper/settings.py changed, reloading. /home/maks/PycharmProjects/skilfactory_django/venv/lib/python3.10/site-packages/django/utils/autoreload.py
+INFO 2023-01-15 15:07:06,534 Watching for file changes with StatReloader /home/maks/PycharmProjects/skilfactory_django/venv/lib/python3.10/site-packages/django/utils/autoreload.py
+INFO 2023-01-15 15:07:12,969 Watching for file changes with StatReloader /home/maks/PycharmProjects/skilfactory_django/venv/lib/python3.10/site-packages/django/utils/autoreload.py
+INFO 2023-01-15 15:07:17,940 Watching for file changes with StatReloader /home/maks/PycharmProjects/skilfactory_django/venv/lib/python3.10/site-packages/django/utils/autoreload.py
+INFO 2023-01-15 15:07:46,582 Watching for file changes with StatReloader /home/maks/PycharmProjects/skilfactory_django/venv/lib/python3.10/site-packages/django/utils/autoreload.py
+WARNING 2023-01-15 15:07:49,741 "GET / HTTP/1.1" 404 2382 /home/maks/PycharmProjects/skilfactory_django/venv/lib/python3.10/site-packages/django/core/servers/basehttp.py
+WARNING 2023-01-15 15:08:02,889 "GET / HTTP/1.1" 404 2382 /home/maks/PycharmProjects/skilfactory_django/venv/lib/python3.10/site-packages/django/core/servers/basehttp.py
+INFO 2023-01-15 15:08:42,800 "GET /news/ HTTP/1.1" 200 11098 /home/maks/PycharmProjects/skilfactory_django/venv/lib/python3.10/site-packages/django/core/servers/basehttp.py
+INFO 2023-01-15 15:13:16,875 /home/maks/PycharmProjects/skilfactory_django/NewsPaper/NewsPaper/settings.py changed, reloading. /home/maks/PycharmProjects/skilfactory_django/venv/lib/python3.10/site-packages/django/utils/autoreload.py
+INFO 2023-01-15 15:13:17,099 Watching for file changes with StatReloader /home/maks/PycharmProjects/skilfactory_django/venv/lib/python3.10/site-packages/django/utils/autoreload.py
+INFO 2023-01-15 15:33:03,649 /home/maks/PycharmProjects/skilfactory_django/NewsPaper/NewsPaper/settings.py changed, reloading. /home/maks/PycharmProjects/skilfactory_django/venv/lib/python3.10/site-packages/django/utils/autoreload.py
+INFO 2023-01-15 15:33:03,884 Watching for file changes with StatReloader /home/maks/PycharmProjects/skilfactory_django/venv/lib/python3.10/site-packages/django/utils/autoreload.py
+INFO 2023-01-15 15:33:24,121 /home/maks/PycharmProjects/skilfactory_django/NewsPaper/NewsPaper/settings.py changed, reloading. /home/maks/PycharmProjects/skilfactory_django/venv/lib/python3.10/site-packages/django/utils/autoreload.py
+INFO 2023-01-15 15:33:24,348 Watching for file changes with StatReloader /home/maks/PycharmProjects/skilfactory_django/venv/lib/python3.10/site-packages/django/utils/autoreload.py
+INFO 2023-01-15 15:37:38,075 /home/maks/PycharmProjects/skilfactory_django/NewsPaper/NewsPaper/settings.py changed, reloading. /home/maks/PycharmProjects/skilfactory_django/venv/lib/python3.10/site-packages/django/utils/autoreload.py
+INFO 2023-01-15 15:38:05,628 Watching for file changes with StatReloader /home/maks/PycharmProjects/skilfactory_django/venv/lib/python3.10/site-packages/django/utils/autoreload.py
+INFO 2023-01-15 15:39:00,068 /home/maks/PycharmProjects/skilfactory_django/NewsPaper/NewsPaper/settings.py changed, reloading. /home/maks/PycharmProjects/skilfactory_django/venv/lib/python3.10/site-packages/django/utils/autoreload.py
+INFO 2023-01-15 15:39:11,592 Watching for file changes with StatReloader /home/maks/PycharmProjects/skilfactory_django/venv/lib/python3.10/site-packages/django/utils/autoreload.py
+INFO 2023-01-15 15:41:06,426 /home/maks/PycharmProjects/skilfactory_django/NewsPaper/NewsPaper/settings.py changed, reloading. /home/maks/PycharmProjects/skilfactory_django/venv/lib/python3.10/site-packages/django/utils/autoreload.py
+2023-01-15 15:41:06,646 INFO Watching for file changes with StatReloader /home/maks/PycharmProjects/skilfactory_django/venv/lib/python3.10/site-packages/django/utils/autoreload.py
+2023-01-15 15:44:35,114 INFO /home/maks/PycharmProjects/skilfactory_django/NewsPaper/NewsPaper/settings.py changed, reloading. /home/maks/PycharmProjects/skilfactory_django/venv/lib/python3.10/site-packages/django/utils/autoreload.py
+2023-01-15 15:45:08,713 INFO Watching for file changes with StatReloader /home/maks/PycharmProjects/skilfactory_django/venv/lib/python3.10/site-packages/django/utils/autoreload.py
+2023-01-15 15:47:16,632 INFO /home/maks/PycharmProjects/skilfactory_django/NewsPaper/NewsPaper/settings.py changed, reloading. /home/maks/PycharmProjects/skilfactory_django/venv/lib/python3.10/site-packages/django/utils/autoreload.py
+2023-01-15 15:47:16,862 INFO Watching for file changes with StatReloader /home/maks/PycharmProjects/skilfactory_django/venv/lib/python3.10/site-packages/django/utils/autoreload.py
+2023-01-15 15:49:15,735 INFO /home/maks/PycharmProjects/skilfactory_django/NewsPaper/NewsPaper/settings.py changed, reloading. /home/maks/PycharmProjects/skilfactory_django/venv/lib/python3.10/site-packages/django/utils/autoreload.py
+2023-01-15 15:49:15,954 INFO Watching for file changes with StatReloader /home/maks/PycharmProjects/skilfactory_django/venv/lib/python3.10/site-packages/django/utils/autoreload.py
+2023-01-15 15:49:41,222 INFO /home/maks/PycharmProjects/skilfactory_django/NewsPaper/NewsPaper/settings.py changed, reloading. /home/maks/PycharmProjects/skilfactory_django/venv/lib/python3.10/site-packages/django/utils/autoreload.py
+2023-01-15 15:49:41,507 INFO Watching for file changes with StatReloader /home/maks/PycharmProjects/skilfactory_django/venv/lib/python3.10/site-packages/django/utils/autoreload.py
+2023-01-15 15:49:57,726 INFO /home/maks/PycharmProjects/skilfactory_django/NewsPaper/NewsPaper/settings.py changed, reloading. /home/maks/PycharmProjects/skilfactory_django/venv/lib/python3.10/site-packages/django/utils/autoreload.py
+2023-01-15 15:49:57,980 INFO Watching for file changes with StatReloader /home/maks/PycharmProjects/skilfactory_django/venv/lib/python3.10/site-packages/django/utils/autoreload.py
+2023-01-15 15:50:09,155 INFO /home/maks/PycharmProjects/skilfactory_django/NewsPaper/NewsPaper/settings.py changed, reloading. /home/maks/PycharmProjects/skilfactory_django/venv/lib/python3.10/site-packages/django/utils/autoreload.py
+2023-01-15 15:50:09,404 INFO Watching for file changes with StatReloader /home/maks/PycharmProjects/skilfactory_django/venv/lib/python3.10/site-packages/django/utils/autoreload.py
+2023-01-15 15:50:44,754 INFO /home/maks/PycharmProjects/skilfactory_django/NewsPaper/NewsPaper/settings.py changed, reloading. /home/maks/PycharmProjects/skilfactory_django/venv/lib/python3.10/site-packages/django/utils/autoreload.py
+2023-01-15 15:50:44,982 INFO Watching for file changes with StatReloader /home/maks/PycharmProjects/skilfactory_django/venv/lib/python3.10/site-packages/django/utils/autoreload.py
+2023-01-15 15:53:46,535 INFO Watching for file changes with StatReloader /home/maks/PycharmProjects/skilfactory_django/venv/lib/python3.10/site-packages/django/utils/autoreload.py
+2023-01-15 15:55:04,198 INFO /home/maks/PycharmProjects/skilfactory_django/NewsPaper/NewsPaper/settings.py changed, reloading. /home/maks/PycharmProjects/skilfactory_django/venv/lib/python3.10/site-packages/django/utils/autoreload.py
+2023-01-15 15:57:02,346 INFO autoreload Watching for file changes with StatReloader
+2023-01-15 15:58:16,960 INFO autoreload /home/maks/PycharmProjects/skilfactory_django/NewsPaper/NewsPaper/settings.py changed, reloading.
+2023-01-15 15:58:17,182 INFO autoreload Watching for file changes with StatReloader
+2023-01-15 16:00:14,192 INFO autoreload /home/maks/PycharmProjects/skilfactory_django/NewsPaper/NewsPaper/settings.py changed, reloading.
+2023-01-15 16:00:14,452 INFO autoreload Watching for file changes with StatReloader
+2023-01-15 16:04:20,178 INFO autoreload /home/maks/PycharmProjects/skilfactory_django/NewsPaper/NewsPaper/settings.py changed, reloading.
+2023-01-15 16:04:20,407 INFO autoreload Watching for file changes with StatReloader
+2023-01-15 16:04:24,672 WARNING log Not Found: /
+2023-01-15 16:04:24,672 WARNING basehttp "GET / HTTP/1.1" 404 2382
+2023-01-15 16:04:50,335 WARNING log Not Found: /sad/asd/
+2023-01-15 16:04:50,336 WARNING basehttp "GET /sad/asd/ HTTP/1.1" 404 2424
+2023-01-15 16:05:26,571 INFO basehttp "GET /admin/ HTTP/1.1" 200 12847
+2023-01-15 16:05:31,037 INFO basehttp "GET /admin/ HTTP/1.1" 200 12847
+2023-01-15 16:05:34,455 INFO basehttp "POST /admin/logout/ HTTP/1.1" 200 1549
+2023-01-15 16:05:35,880 INFO basehttp "GET /admin/ HTTP/1.1" 302 0
+2023-01-15 16:05:35,886 INFO basehttp "GET /admin/login/?next=/admin/ HTTP/1.1" 200 2218
+2023-01-15 16:05:39,142 INFO basehttp "POST /admin/login/?next=/admin/ HTTP/1.1" 200 2381
+2023-01-15 16:05:46,204 INFO basehttp "POST /admin/login/?next=/admin/ HTTP/1.1" 200 2381
+2023-01-15 16:07:24,695 INFO basehttp "POST /admin/login/?next=/admin/ HTTP/1.1" 200 2381
+2023-01-15 16:11:42,522 INFO autoreload /home/maks/PycharmProjects/skilfactory_django/NewsPaper/NewsPaper/settings.py changed, reloading.
+2023-01-15 16:11:42,757 INFO autoreload Watching for file changes with StatReloader
+2023-01-15 16:12:05,007 INFO autoreload /home/maks/PycharmProjects/skilfactory_django/NewsPaper/NewsPaper/settings.py changed, reloading.
+2023-01-15 16:12:05,230 INFO autoreload Watching for file changes with StatReloader
+2023-01-15 16:15:14,536 INFO autoreload /home/maks/PycharmProjects/skilfactory_django/NewsPaper/NewsPaper/settings.py changed, reloading.
+2023-01-15 16:15:14,808 INFO autoreload Watching for file changes with StatReloader
+2023-01-15 16:16:18,944 INFO basehttp "POST /admin/login/?next=/admin/ HTTP/1.1" 200 2381
+2023-01-15 16:16:24,722 INFO basehttp "GET /admin/fg HTTP/1.1" 302 0
+2023-01-15 16:16:24,725 INFO basehttp "GET /admin/login/?next=/admin/fg HTTP/1.1" 200 2222
+2023-01-15 16:16:29,254 INFO basehttp "POST /admin/login/?next=/admin/fg HTTP/1.1" 302 0
+2023-01-15 16:16:29,262 WARNING log Not Found: /admin/fg
+2023-01-15 16:16:29,263 WARNING basehttp "GET /admin/fg HTTP/1.1" 404 6606
+2023-01-15 16:16:35,802 INFO basehttp "GET /admin/ HTTP/1.1" 200 12847
+2023-01-15 16:19:22,554 INFO autoreload /home/maks/PycharmProjects/skilfactory_django/NewsPaper/NewsPaper/settings.py changed, reloading.
+2023-01-15 16:20:22,485 INFO autoreload Watching for file changes with StatReloader
+2023-01-15 16:20:34,469 INFO basehttp "GET /admin/ HTTP/1.1" 200 12847
+2023-01-15 16:20:46,880 INFO basehttp "GET /admin/ HTTP/1.1" 200 12847
+2023-01-15 16:20:47,876 INFO basehttp "GET /admin/ HTTP/1.1" 200 12847
+2023-01-15 16:20:48,909 INFO basehttp "GET /admin/ HTTP/1.1" 200 12847
+2023-01-15 16:25:23,561 INFO autoreload /home/maks/PycharmProjects/skilfactory_django/NewsPaper/NewsPaper/settings.py changed, reloading.
+2023-01-15 16:25:23,805 INFO autoreload Watching for file changes with StatReloader
+2023-01-15 16:28:39,187 INFO autoreload /home/maks/PycharmProjects/skilfactory_django/NewsPaper/NewsPaper/settings.py changed, reloading.
+2023-01-15 16:28:39,416 INFO autoreload Watching for file changes with StatReloader
+2023-01-15 16:28:51,242 WARNING log Not Found: /
+2023-01-15 16:28:51,243 WARNING basehttp "GET / HTTP/1.1" 404 2382
+2023-01-15 16:29:29,916 INFO autoreload /home/maks/PycharmProjects/skilfactory_django/NewsPaper/NewsPaper/settings.py changed, reloading.
+2023-01-15 16:29:30,142 INFO autoreload Watching for file changes with StatReloader
+2023-01-15 16:29:34,578 WARNING log Not Found: /
+2023-01-15 16:29:34,578 WARNING basehttp "GET / HTTP/1.1" 404 2382

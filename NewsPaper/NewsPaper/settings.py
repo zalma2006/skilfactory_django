@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 import os
 from pathlib import Path
 from dotenv import load_dotenv
+import logging
 load_dotenv()
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -176,5 +177,78 @@ CACHES = {
     'default': {
         'BACKEND': 'django.core.cache.backends.filebased.FileBasedCache',
         'LOCATION': os.path.join(BASE_DIR, 'cache_files'),
+    }
+}
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'simple': {
+            'format': '{asctime} {levelname} {message}',
+            'style': '{',
+        },
+        'gen_sec': {
+            'format': '{asctime} {levelname} {module} {message}',
+            'style': '{',
+        },
+        'err': {
+            'format': '{asctime} {levelname} {message} {pathname} {exc_info}',
+            'style': '{',
+        }
+    },
+    'handlers': {
+        'console': {
+            'level': 'DEBUG',
+            'class': 'logging.StreamHandler',
+            'formatter': 'simple'
+        },
+        'mail_admins': {
+            'level': 'ERROR',
+            'class': 'django.utils.log.AdminEmailHandler',
+        },
+        'general': {
+            'class': 'logging.FileHandler',
+            'filename': 'NewsPaper/logs/general.log',
+            'level': 'INFO',
+            'formatter': 'gen_sec'
+        },
+        'secure': {
+            'class': 'logging.FileHandler',
+            'filename': 'NewsPaper/logs/security.log',
+            'formatter': 'gen_sec'
+        },
+        'errors': {
+            'class': 'logging.FileHandler',
+            'filename': 'NewsPaper/logs/errors.log',
+            'level': 'ERROR',
+            'formatter': 'err'
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['console', 'general'],
+            'propagate': True,
+        },
+        'django.request': {
+            'handlers': ['mail_admins', 'errors'],
+            'propagate': True,
+        },
+        'django.security': {
+            'handlers': ['secure'],
+            'propagate': True,
+        },
+        'django.server': {
+            'handlers': ['errors'],
+            'propagate': True
+        },
+        'django.template': {
+            'handlers': ['errors'],
+            'propagate': True
+        },
+        'django.db.backends': {
+            'handlers': ['errors'],
+            'propagate': True
+        },
     }
 }
