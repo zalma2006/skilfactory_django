@@ -88,3 +88,6 @@ INFO 2023-01-15 15:41:06,426 /home/maks/PycharmProjects/skilfactory_django/NewsP
 2023-01-15 16:29:30,142 INFO autoreload Watching for file changes with StatReloader
 2023-01-15 16:29:34,578 WARNING log Not Found: /
 2023-01-15 16:29:34,578 WARNING basehttp "GET / HTTP/1.1" 404 2382
+2023-01-15 16:38:05,145 INFO autoreload Watching for file changes with StatReloader
+2023-01-15 16:38:12,372 INFO autoreload Watching for file changes with StatReloader
+2023-01-15 16:38:58,778 INFO autoreload /home/maks/PycharmProjects/skilfactory_django/NewsPaper/NewsPaper/settings.py changed, reloading.
