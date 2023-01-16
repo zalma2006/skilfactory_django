@@ -195,6 +195,10 @@ LOGGING = {
         'err': {
             'format': '{asctime} {levelname} {message} {pathname} {exc_info}',
             'style': '{',
+        },
+        'simple_warning': {
+            'format': '{asctime} {levelname} {message} {pathname}',
+            'style': '{'
         }
     },
     'filters': {
@@ -211,6 +215,12 @@ LOGGING = {
             'filters': ['require_debug_true'],
             'class': 'logging.StreamHandler',
             'formatter': 'simple'
+        },
+        'console1': {
+            'level': 'WARNING',
+            'filters': ['require_debug_true'],
+            'class': 'logging.StreamHandler',
+            'formatter': 'simple_warning'
         },
         'mail_admins': {
             'level': 'ERROR',
@@ -238,7 +248,7 @@ LOGGING = {
     },
     'loggers': {
         'django': {
-            'handlers': ['console', 'general'],
+            'handlers': ['console', 'general', 'console1'],
             'propagate': True,
         },
         'django.request': {
