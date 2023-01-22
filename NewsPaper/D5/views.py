@@ -2,6 +2,7 @@
 # что в этом представлении мы будем выводить список объектов из БД
 import datetime
 
+import pytz
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404, render, redirect
@@ -17,6 +18,12 @@ from django.contrib.auth.models import User, Group
 from .models import BaseRegisterForm, Category
 from django.core.cache import cache
 from django.utils.translation import gettext as _
+from django.utils.translation import activate, get_supported_language_variant
+
+from .models import Category, MyModel
+
+from django.utils import timezone
+from django.shortcuts import redirect
 
 
 class NewsLists(ListView):
@@ -150,10 +157,20 @@ def subscribe(request, pk):
 
 class Index(View):
     def get(self, request):
-        string = _('Hello world')
+        curent_time = timezone.now()
+
+        # .  Translators: This message appears on the home page only
+        models = MyModel.objects.all()
 
         context = {
-            'string': string
+            'models': models,
+            'current_time': timezone.now(),
+            'timezones': pytz.common_timezones  # добавляем в контекст все доступные часовые пояса
         }
 
         return HttpResponse(render(request, 'index.html', context))
+
+    #  по пост-запросу будем добавлять в сессию часовой пояс, который и будет обрабатываться написанным нами ранее middleware
+    def post(self, request):
+        request.session['django_timezone'] = request.POST['timezone']
+        return redirect('/')

@@ -78,7 +78,6 @@ class Post(models.Model):
         cache.delete(f'new-{self.pk}')
 
 
-
 class PostCategory(models.Model):
     post_id = models.ForeignKey(Post, on_delete=models.CASCADE)
     category_id = models.ForeignKey(Category, on_delete=models.CASCADE)
@@ -128,6 +127,7 @@ class BaseRegisterForm(UserCreationForm):
         basic_group = Group.objects.get(name='common')
         basic_group.user_set.add(user)
         return user
+
 
 class MyModel(models.Model):
     name = models.CharField(max_length=255)

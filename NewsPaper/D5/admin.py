@@ -1,5 +1,6 @@
 from django.contrib import admin
-from .models import Category, Author, Post, PostCategory, Comment
+from .models import Category, Author, Post, PostCategory, Comment, MyModel
+from modeltranslation.admin import TranslationAdmin
 
 
 class CommentAdmin(admin.ModelAdmin):
@@ -27,8 +28,17 @@ class PostAdmin(admin.ModelAdmin):
                      'rank_post')
 
 
-admin.site.register(Category)
+class CategoryTranslationAdmin(TranslationAdmin):
+    model = Category
+
+
+class MyModelTranslationAdmin(TranslationAdmin):
+    model = MyModel
+
+
+admin.site.register(Category, CategoryTranslationAdmin)
 admin.site.register(Author)
 admin.site.register(Post, PostAdmin)
 admin.site.register(PostCategory)
 admin.site.register(Comment, CommentAdmin)
+admin.site.register(MyModel, MyModelTranslationAdmin)
