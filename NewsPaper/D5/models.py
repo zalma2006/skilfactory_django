@@ -7,6 +7,8 @@ from allauth.account.forms import SignupForm
 from django.contrib.auth.models import Group
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
+from django.utils.translation import gettext as _
+from django.utils.translation import pgettext_lazy
 
 
 class Author(models.Model):
@@ -31,7 +33,7 @@ class Author(models.Model):
 
 
 class Category(models.Model):
-    name_category = models.CharField(unique=True, max_length=255)
+    name_category = models.CharField(unique=True, max_length=255, help_text=_('category name'))
     subscribers = models.ManyToManyField(User, blank=True, null=True, related_name='categories')
 
     def __str__(self):
@@ -126,3 +128,9 @@ class BaseRegisterForm(UserCreationForm):
         basic_group = Group.objects.get(name='common')
         basic_group.user_set.add(user)
         return user
+
+class MyModel(models.Model):
+    name = models.CharField(max_length=255)
+    kind = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='kinds',
+                             verbose_name=pgettext_lazy('help text for MyModel model',
+                                                        'This is the help text'))
