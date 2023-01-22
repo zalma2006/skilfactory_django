@@ -3,7 +3,9 @@
 import datetime
 
 from django.contrib.auth.decorators import login_required
+from django.http import HttpResponse
 from django.shortcuts import get_object_or_404, render, redirect
+from django.views import View
 from django.views.generic import (ListView, DetailView, CreateView, UpdateView, DeleteView,
                                   TemplateView)
 from .models import Post
@@ -14,6 +16,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.models import User, Group
 from .models import BaseRegisterForm, Category
 from django.core.cache import cache
+from django.utils.translation import gettext as _
 
 
 class NewsLists(ListView):
@@ -53,6 +56,8 @@ class NewsDetail(DetailView):
             cache.set(f'new-{self.kwargs["pk"]}', obj)
             print(obj)
         return obj
+
+
 class NewsListsSearch(ListView):
     model = Post
     ordering = 'dt_create'
@@ -143,3 +148,12 @@ def subscribe(request, pk):
     return render(request, 'news/subscribe.html', {'category': category, 'message': message})
 
 
+class Index(View):
+    def get(self, request):
+        string = _('Hello world')
+
+        context = {
+            'string': string
+        }
+
+        return HttpResponse(render(request, 'index.html', context))

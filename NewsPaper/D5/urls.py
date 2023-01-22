@@ -1,7 +1,8 @@
-from django.urls import path
+from django.urls import path, include
 # Импортируем созданное нами представление
 from .views import (NewsLists, NewsDetail, NewsListsSearch, NewsCreate,
-                    NewsUpdate, NewsDelete, BaseRegisterView, CategoryListView, subscribe, upgrade_me)
+                    NewsUpdate, NewsDelete, BaseRegisterView, CategoryListView, subscribe, upgrade_me,
+                    Index)
 from django.contrib.auth.views import LoginView, LogoutView
 
 urlpatterns = [
@@ -25,4 +26,5 @@ urlpatterns = [
     path('upgrade/', upgrade_me, name='upgrade'),
     path('categories/<int:pk>', CategoryListView.as_view(), name='category_list'),
     path('categories/<int:pk>/subscribe', subscribe, name='subscribe'),
+    path('index/', Index.as_view(), name='index')
 ]
