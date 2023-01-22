@@ -30,4 +30,4 @@ msgstr "Зацени мой новый классный перевод"
 
 #: templates/news.html:26
 msgid "All news"
-msgstr "Все новости"
+msgstr "Все новости!"
