@@ -1,0 +1,18 @@
+{% extends "flatpages/default.html" %}
+
+{% block content %}
+{% if group %}
+<h1>Количество возможных групп подписки: {{group|length}}</h1>
+<form>
+<p><select name="select" size={{group|length}} multiple>
+{% for group1 in group %}
+    {{ csrf_token }}
+    <option selected value={{group1.id}}>{{group1.name}}</option>
+{% endfor %}
+</select>
+<input type="submit" value="Отправить"></p>
+  </form>
+{% else %}
+<h2> Невозможно подписаться, вы уже состоите во всех группах </h2>
+{% endif %}
+{% endblock content %}

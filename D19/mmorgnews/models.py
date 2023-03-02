@@ -55,6 +55,7 @@ class Comment(models.Model):
     def get_absolute_url(self):
         return reverse(f'post')
 
+
 class News(models.Model):
     category = models.ManyToManyField(Category, through='NewsCategory')
     title = models.CharField(max_length=255, null=False)
@@ -71,7 +72,7 @@ class News(models.Model):
             'post_created_email.html',
             {
                 'text': news.text[:150],
-                'link': f'{settings.SITE_URL}/news/{pk}'
+                'link': f'{settings.SITE_URL}/post/{pk}'
             }
         )
         msg = EmailMultiAlternatives(

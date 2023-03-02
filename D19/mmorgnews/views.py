@@ -1,11 +1,12 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render
 from django.urls import reverse_lazy
-
+from django.contrib.auth.models import Group
 from .models import Post, BaseRegisterForm
-from django.views.generic import ListView, CreateView, UpdateView, DeleteView
+from django.views.generic import ListView, CreateView, UpdateView, DeleteView, DetailView
 from django.contrib.auth.models import User
 from .forms import PostForm
+from django.core.cache import cache
 
 
 class NewsLists(ListView):
@@ -44,3 +45,25 @@ class PostDelete(LoginRequiredMixin, DeleteView):
     model = Post
     template_name = 'post_edit.html'
     success_url = reverse_lazy('post')
+
+
+class PostDetail(DetailView):
+    template_name = 'post1.html'
+    context_object_name = 'post1'
+    queryset = Post.objects.all()
+
+    def get_object(self, *args, **kwargs):
+        obj = cache.get(f'new-{self.kwargs["pk"]}')
+        print(obj)
+
+        if not obj:
+            obj = super().get_object(queryset=self.queryset)
+            cache.set(f'new-{self.kwargs["pk"]}', obj)
+            print(obj)
+        return obj
+
+
+class Groups(ListView):
+    model = Group
+    template_name = 'upgrade.html'
+    context_object_name = 'group'

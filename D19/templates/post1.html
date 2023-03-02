@@ -1,0 +1,25 @@
+{% extends 'flatpages/default.html' %}
+{% block title %}
+Post
+{% endblock title %}
+
+{% block content %}
+{% if post1 %}
+    <table>
+        <tr>
+            <td>id Новости</td>
+            <td>Заголовок</td>
+            <td>Содержание</td>
+            <td>Дата публикации</td>
+        </tr>
+        <tr>
+            <td>{{ post1.id }}</td>
+            <td>{{post1.title}}</td>
+            <td>{{post1.text}}</td>
+            <td>{{post1.date|date:'d.m.Y'}}</td>
+        </tr>
+    </table>
+{% else %}
+    <h3>Нет такой статьи</h3>
+{% endif %}
+{% endblock content %}
