@@ -62,28 +62,6 @@ class News(models.Model):
     text = models.TextField()
     date = models.DateTimeField(auto_now_add=True)
 
-    def save(self, force_insert=False, force_update=False, using=None, update_fields=None):
-        news = super().save()
-        news.save()
-
-        print(news.category)
-        basic_group = Group.objects.get(name=news.category)
-        html_content = render_to_string(
-            'post_created_email.html',
-            {
-                'text': news.text[:150],
-                'link': f'{settings.SITE_URL}/post/{pk}'
-            }
-        )
-        msg = EmailMultiAlternatives(
-            subject=news.title,
-            body='',
-            from_email=settings.DEFAULT_FROM_EMAIL,
-            to=subscribers,
-        )
-        msg.attach_alternative(html_content, 'text/html')
-        msg.send()
-
 
 class PostCategory(models.Model):
     post = models.ForeignKey(Post, on_delete=models.CASCADE)
