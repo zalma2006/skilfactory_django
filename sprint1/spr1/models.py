@@ -13,6 +13,9 @@ class Users(models.Model):
                                          "'+999999999'. Up to 12 digits allowed.")
     phone = models.CharField(validators=[phone_regex], max_length=14, blank=True)
 
+    def __str__(self):
+        return f'{self.name}'
+
 
 class Coords(models.Model):
     latitude = models.FloatField()
@@ -32,9 +35,9 @@ class PerevalAdded(models.Model):
     beauty_title = models.CharField(max_length=255)
     title = models.CharField(null=False, max_length=255)
     other_titles = models.CharField(max_length=255)
-    connect = models.CharField(max_length=1)
+    connect = models.CharField(max_length=1, default=' ')
     add_time = models.DateTimeField(auto_now_add=True)
-    user = models.ForeignKey(Users, on_delete=models.CASCADE)
+    user = models.ForeignKey(Users, on_delete=models.CASCADE, related_name='user')
     coords = models.OneToOneField(Coords, on_delete=models.CASCADE)
     winter = models.CharField(max_length=100)
     summer = models.CharField(max_length=100)

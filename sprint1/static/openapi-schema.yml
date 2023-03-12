@@ -1,0 +1,92 @@
+swagger: '2.0'
+info:
+  title: api_sprint1
+  description: API
+  version: v1
+host: 127.0.0.1:8000
+schemes:
+  - http
+basePath: /msg
+consumes:
+  - application/json
+produces:
+  - application/json
+securityDefinitions:
+  Basic:
+    type: basic
+security:
+  - Basic: []
+paths:
+  /perevaladded/:
+    get:
+      operationId: perevaladded_list
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/PerevalAdded'
+      tags:
+        - perevaladded
+    parameters: []
+definitions:
+  PerevalAdded:
+    required:
+      - title
+      - other_titles
+      - user
+      - coords
+      - winter
+      - summer
+      - autumn
+      - spring
+      - images
+    type: object
+    properties:
+      title:
+        title: Title
+        type: string
+        maxLength: 255
+        minLength: 1
+      other_titles:
+        title: Other titles
+        type: string
+        maxLength: 255
+        minLength: 1
+      connect:
+        title: Connect
+        type: string
+        maxLength: 1
+        minLength: 1
+      user:
+        title: User
+        type: integer
+      coords:
+        title: Coords
+        type: integer
+      winter:
+        title: Winter
+        type: string
+        maxLength: 100
+        minLength: 1
+      summer:
+        title: Summer
+        type: string
+        maxLength: 100
+        minLength: 1
+      autumn:
+        title: Autumn
+        type: string
+        maxLength: 100
+        minLength: 1
+      spring:
+        title: Spring
+        type: string
+        maxLength: 100
+        minLength: 1
+      images:
+        title: Images
+        type: integer
