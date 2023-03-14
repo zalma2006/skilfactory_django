@@ -1,3 +1,6 @@
+import ast
+import json
+
 from rest_framework import serializers
 from spr1.models import PerevalAdded, Users, Coords, Image
 
@@ -12,6 +15,7 @@ class UsersSerializer(serializers.BaseSerializer):
                   'phone')
 
     def to_internal_value(self, data):
+        data = ast.literal_eval(data)
         name = data.get('name')
         email = data.get('email')
         fam = data.get('fam')
@@ -60,33 +64,38 @@ class CoordsSerializer(serializers.BaseSerializer):
                   'height')
 
     def to_internal_value(self, data):
+        data = ast.literal_eval(data)
         latitude = data.get('latitude')
         longitude = data.get('longitude')
         height = data.get('height')
+
         if not latitude:
             raise serializers.ValidationError({
                 'latitude': 'широта должно быть заполнено'})
-        elif not isinstance(latitude, float):
-            raise serializers.ValidationError({
-                'latitude': 'широта это число с плавающей точкой!'})
         else:
-            latitude = float(latitude)
+            try:
+                latitude = float(latitude)
+            except ValueError:
+                raise serializers.ValidationError({
+                    'latitude': 'широта это число с плавающей точкой!'})
         if not longitude:
             raise serializers.ValidationError({
                 'longitude': 'долгота должно быть заполнено'})
-        elif not isinstance(longitude, float):
-            raise serializers.ValidationError({
-                'longitude': 'долгота это число с плавающей точкой!'})
         else:
-            longitude = float(longitude)
+            try:
+                longitude = float(longitude)
+            except ValueError:
+                raise serializers.ValidationError({
+                    'longitude': 'долгота это число с плавающей точкой!'})
         if not height:
             raise serializers.ValidationError({
                 'height': 'Высота должно быть заполнено'})
-        elif not isinstance(height, float):
-            raise serializers.ValidationError({
-                'height': 'Высота это число с плавающей точкой!'})
         else:
-            height = float(height)
+            try:
+                height = float(height)
+            except ValueError:
+                raise serializers.ValidationError({
+                    'height': 'Высота это число с плавающей точкой!'})
         return {'latitude': latitude,
                 'longitude': longitude,
                 'height': height}
@@ -100,13 +109,14 @@ class CoordsSerializer(serializers.BaseSerializer):
         return Coords.objects.create(**validated_data)
 
 
-class ImagesSerializer(serializers.BaseSerializer):
+class ImagesSerializer(serializers.BaseSerializer, serializers.ListSerializer):
     class Meta:
         model = Image
         fields = ('title',
                   'data')
 
     def to_internal_value(self, data):
+        data = ast.literal_eval(data)
         title = data.get('title')
         data = data.get('data')
         if not title:
@@ -146,5 +156,13 @@ class PerevalAddedSerializer(serializers.ModelSerializer):
                   'autumn',
                   'spring',
                   'images')
-        # 'images_title',
-        # 'images_data')
+
+    def create(self, validated_data):
+        users_data = validated_data.pop('users')
+        coords_data = validated_data.pop('coords')
+        image_data = validated_data.pop('images')
+        user = Users.objects.create(**users_data)
+        coords = Coords.objects.create(**coords_data)
+        images = Image.objects.create(**image_data)
+        pereval = PerevalAdded.objects.create(user=user.id, coords=coords.id, images=images.id, **validated_data)
+        return pereval
