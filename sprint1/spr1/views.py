@@ -2,6 +2,8 @@ from django.shortcuts import render
 
 # Create your views here.
 from django.http import HttpResponse
+from requests import Response
+from rest_framework import status
 from rest_framework.generics import CreateAPIView
 from . import serializers
 from .models import PerevalAdded, Users
@@ -45,6 +47,7 @@ class PerevalAddedListAPIView(CreateAPIView):
 
     def get_queryset(self):
         return PerevalAdded.objects.all()
+
 
 
 class UsersAddedListAPIView(CreateAPIView):
