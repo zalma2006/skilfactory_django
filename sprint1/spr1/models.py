@@ -24,7 +24,7 @@ class Coords(models.Model):
 
 
 class Image(models.Model):
-    title = models.CharField(max_length=255)
+    title = models.CharField(max_length=255, null=False)
     data = models.ImageField(max_length=4000, upload_to='uploads/')
 
 
@@ -43,5 +43,5 @@ class PerevalAdded(models.Model):
     summer = models.CharField(max_length=100)
     autumn = models.CharField(max_length=100)
     spring = models.CharField(max_length=100)
-    images = models.ForeignKey(Image, on_delete=models.CASCADE, related_name='images')
+    images = models.ManyToManyField(Image, related_name='images')
     status = models.CharField(choices=changes, max_length=8)

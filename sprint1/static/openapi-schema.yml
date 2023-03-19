@@ -18,24 +18,104 @@ security:
   - Basic: []
 paths:
   /perevaladded/:
-    get:
-      operationId: perevaladded_list
+    post:
+      operationId: perevaladded_create
       description: ''
-      parameters: []
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/PerevalAdded'
       responses:
         '200':
           description: ''
           schema:
-            type: array
-            items:
-              $ref: '#/definitions/PerevalAdded'
+            $ref: '#/definitions/PerevalAdded'
       tags:
         - perevaladded
     parameters: []
 definitions:
+  User:
+    required:
+      - email
+      - fam
+      - name
+      - otc
+    type: object
+    properties:
+      id:
+        title: ID
+        type: integer
+        readOnly: true
+      email:
+        title: Email
+        type: string
+        format: email
+        maxLength: 254
+        minLength: 1
+      fam:
+        title: Fam
+        type: string
+        maxLength: 150
+        minLength: 1
+      name:
+        title: Name
+        type: string
+        maxLength: 150
+        minLength: 1
+      otc:
+        title: Otc
+        type: string
+        maxLength: 150
+        minLength: 1
+      phone:
+        title: Phone
+        type: string
+        pattern: ^\+?1?\d{9,12}$
+        maxLength: 14
+  Coord:
+    required:
+      - latitude
+      - longitude
+      - height
+    type: object
+    properties:
+      id:
+        title: ID
+        type: integer
+        readOnly: true
+      latitude:
+        title: Latitude
+        type: number
+      longitude:
+        title: Longitude
+        type: number
+      height:
+        title: Height
+        type: number
+  Image:
+    required:
+      - title
+      - data
+    type: object
+    properties:
+      id:
+        title: ID
+        type: integer
+        readOnly: true
+      title:
+        title: Title
+        type: string
+        maxLength: 255
+        minLength: 1
+      data:
+        title: Data
+        type: string
   PerevalAdded:
     required:
       - title
+      - beauty_title
       - other_titles
       - user
       - coords
@@ -51,6 +131,11 @@ definitions:
         type: string
         maxLength: 255
         minLength: 1
+      beauty_title:
+        title: Beauty title
+        type: string
+        maxLength: 255
+        minLength: 1
       other_titles:
         title: Other titles
         type: string
@@ -62,11 +147,9 @@ definitions:
         maxLength: 1
         minLength: 1
       user:
-        title: User
-        type: integer
+        $ref: '#/definitions/User'
       coords:
-        title: Coords
-        type: integer
+        $ref: '#/definitions/Coord'
       winter:
         title: Winter
         type: string
@@ -88,5 +171,8 @@ definitions:
         maxLength: 100
         minLength: 1
       images:
-        title: Images
-        type: integer
+        schema:
+          type: array
+          items:
+            type: object
+            $ref: '#/definitions/Image'
