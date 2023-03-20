@@ -23,7 +23,7 @@ paths:
       description: ''
       parameters:
         - name: data
-          in: body
+          in: fromData
           required: true
           schema:
             $ref: '#/definitions/PerevalAdded'
@@ -110,8 +110,14 @@ definitions:
         maxLength: 255
         minLength: 1
       data:
-        title: Data
-        type: string
+        consumes:
+          - multipart/form-data
+        parameters:
+          - name: file
+            in: formData   # <-----
+            description: The uploaded file data
+            required: true
+            type: file
   PerevalAdded:
     required:
       - title
