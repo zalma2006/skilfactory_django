@@ -2,66 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="30f8a7ef-e6dd-48cc-9f1a-9fbfbd9ed3a9" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../.idea/skilfactory_django.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../D18/.idea/D18.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../D18/D18/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../D18/D18/asgi.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../D18/D18/settings.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../D18/D18/urls.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../D18/D18/wsgi.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../D18/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../D18/manage.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../D18/respapi/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../D18/respapi/admin.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../D18/respapi/apps.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../D18/respapi/migrations/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../D18/respapi/models.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../D18/respapi/serializers.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../D18/respapi/tests.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../D18/respapi/views.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../D19/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../D19/.idea/D19.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../D19/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../D19/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../D19/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../D19/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../D19/D19/.env" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../D19/D19/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../D19/D19/asgi.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../D19/D19/celery.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../D19/D19/settings.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../D19/D19/urls.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../D19/D19/wsgi.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../D19/db.sqlite3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../D19/manage.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../D19/mmorgnews/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../D19/mmorgnews/admin.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../D19/mmorgnews/apps.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../D19/mmorgnews/forms.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../D19/mmorgnews/migrations/0002_alter_author_user_alter_users_user.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../D19/mmorgnews/migrations/0003_alter_author_user_alter_users_user.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../D19/mmorgnews/migrations/0004_alter_author_user.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../D19/mmorgnews/migrations/0005_alter_author_user.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../D19/mmorgnews/migrations/0006_remove_author_user_author_author.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../D19/mmorgnews/migrations/0007_alter_author_author.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../D19/mmorgnews/models.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../D19/mmorgnews/signals.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../D19/mmorgnews/tasks.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../D19/mmorgnews/tests.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../D19/mmorgnews/urls.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../D19/mmorgnews/views.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../D19/static/css/styles.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../D19/templates/account/base.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../D19/templates/flatpages/default.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../D19/templates/login.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../D19/templates/logout.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../D19/templates/post.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../D19/templates/post_edit.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../D19/templates/register.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../D19/templates/signup.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../NewsPaper/.idea/NewsPaper.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../NewsPaper/NewsPaper/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/../NewsPaper/NewsPaper/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../NewsPaper/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/../NewsPaper/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sprint1/spr1/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/../sprint1/spr1/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sprint1/spr1/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/../sprint1/spr1/serializers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sprint1/spr1/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/../sprint1/spr1/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sprint1/spr1/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/../sprint1/spr1/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sprint1/sprint1/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/../sprint1/sprint1/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sprint1/static/openapi-schema.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../sprint1/static/openapi-schema.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,7 +27,7 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "/home/maks/PycharmProjects/skilfactory_django/D9"
+    "last_opened_file_path": "/home/maks/PycharmProjects/skilfactory_django/NewsPaper"
   }
 }]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />

@@ -44,4 +44,4 @@ class PerevalAdded(models.Model):
     autumn = models.CharField(max_length=100)
     spring = models.CharField(max_length=100)
     images = models.ManyToManyField(Image, related_name='images')
-    status = models.CharField(choices=changes, max_length=8)
+    status = models.CharField(choices=changes, default='new', max_length=8)

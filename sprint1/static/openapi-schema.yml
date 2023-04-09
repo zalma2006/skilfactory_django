@@ -114,7 +114,7 @@ definitions:
           - multipart/form-data
         parameters:
           - name: file
-            in: formData   # <-----
+            in: formData
             description: The uploaded file data
             required: true
             type: file
