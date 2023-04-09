@@ -23,7 +23,13 @@ class Coords(models.Model):
     height = models.FloatField()
 
 
+class PerevalImage(models.Model):
+    pereval = models.ForeignKey('PerevalAdded', on_delete=models.CASCADE, related_name='Pereval')
+    image = models.ForeignKey('Image', on_delete=models.CASCADE)
+
+
 class Image(models.Model):
+    img = models.ManyToManyField('Image', through=PerevalImage)
     title = models.CharField(max_length=255, null=False)
     data = models.ImageField(max_length=4000, upload_to='uploads/')
 
@@ -43,5 +49,5 @@ class PerevalAdded(models.Model):
     summer = models.CharField(max_length=100)
     autumn = models.CharField(max_length=100)
     spring = models.CharField(max_length=100)
-    images = models.ManyToManyField(Image, related_name='images')
+    per = models.ManyToManyField('PerevalAdded', through=PerevalImage)
     status = models.CharField(choices=changes, default='new', max_length=8)

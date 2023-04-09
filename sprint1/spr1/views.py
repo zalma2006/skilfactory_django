@@ -14,10 +14,6 @@ class PerevalAddedListAPIView(CreateAPIView):
     def get_queryset(self):
         return PerevalAdded.objects.all()
 
-    # def post(self, request, *args, **kwargs):
-    #     print(request.data)
-    #     return JsonResponse({'msg': 'Ok'})
-
 
 class PerevalFind(RetrieveAPIView):
     serializer_class = serializers.PerevalFindElement

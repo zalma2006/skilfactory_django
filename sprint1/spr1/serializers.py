@@ -1,5 +1,5 @@
-from rest_framework import serializers
-from spr1.models import PerevalAdded, Users, Coords, Image
+from rest_framework import serializers, request
+from spr1.models import PerevalAdded, Users, Coords, Image, PerevalImage
 
 
 class UsersSerializer(serializers.ListSerializer):
@@ -46,7 +46,7 @@ class ImageSerializer(serializers.ModelSerializer):
 class PerevalAddedSerializer(serializers.ModelSerializer):
     user = UserSerializer()
     coords = CoordSerializer()
-    images = ImagesSerializer(child=ImageSerializer())
+    per = ImagesSerializer(child=ImageSerializer())
 
     class Meta:
         model = PerevalAdded
@@ -60,17 +60,19 @@ class PerevalAddedSerializer(serializers.ModelSerializer):
                   'summer',
                   'autumn',
                   'spring',
-                  'images',
+                  'per',
                   )
 
     def create(self, validated_data):
         users_data = validated_data.pop('user')
         coords_data = validated_data.pop('coords')
-        image_data = validated_data.pop('images')
+        image_data = validated_data.pop('per')
         user = Users.objects.create(**users_data)
         coords = Coords.objects.create(**coords_data)
-        images = Image.objects.create(**image_data)
-        pereval = PerevalAdded.objects.create(user=user, coords=coords, images=images, **validated_data)
+        pereval = PerevalAdded.objects.create(user=user, coords=coords, **validated_data)
+        for img in image_data:
+            image = Image.objects.create(**img)
+            PerevalImage.objects.create(image=image, pereval=pereval)
         return pereval
 
     def update(self, instance, validated_data):
