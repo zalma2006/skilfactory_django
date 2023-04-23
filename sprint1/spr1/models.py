@@ -53,7 +53,7 @@ class PerevalAdded(models.Model):
     summer = models.CharField(max_length=100)
     autumn = models.CharField(max_length=100)
     spring = models.CharField(max_length=100)
-    images = models.CharField(max_length=100, default='')
+    images = models.CharField(max_length=10000, default='')
     status = models.CharField(choices=changes, default='new', max_length=8)
 
 

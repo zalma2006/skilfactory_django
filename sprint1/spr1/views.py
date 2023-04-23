@@ -2,6 +2,7 @@ import os
 import re
 from collections import OrderedDict
 from rest_framework.generics import CreateAPIView, ListAPIView
+from rest_framework.response import Response
 from rest_framework.viewsets import ViewSet
 
 from . import serializers
@@ -44,6 +45,20 @@ class EmailPerevalView(ListAPIView):
         request = self.request
         email = request.parser_context['kwargs']['email']
         queryset = PerevalAdded.objects.filter(user__email=email)
+        # попытка изменить queryset images неудачно, подумать как менять не в БД
+        # idx = int(queryset.values()[0]['id'])
+        # images = list(PerevalImages.objects.filter(pereval=idx).values())
+        # imgs = []
+        # for img in images:
+        #     tmp_img = Image.objects.get(pk=img['image_id'])
+        #     path = tmp_img.data.url.split('/')[-1]
+        #     tmp = {'idx': str(tmp_img.pk), 'titlex': tmp_img.title, 'datax': path}
+        #     imgs.append(tmp)
+        # imgs = str(imgs).replace('\'', '').replace(':', ' ').strip('[]{}')
+        # imgs = imgs.replace('}', '').replace('{', '').replace('\,', '')
+        # queryset = PerevalAdded.objects.filter(user__email=email)
+        # queryset.update(images=imgs)
+        # print(queryset.values())
         return queryset
 
 
@@ -127,6 +142,9 @@ def pereval_update(request, pk):
         if len(images_send1) == len(images_data1):
             for idx1, img_send in enumerate(images_send1):
                 image = Image.objects.get(pk=img_send['image_id'])
+                path_file = f"{str(os.getenv('FILE_DIR'))}{image.data.url}"
+                if os.path.isfile(path_file):
+                    os.remove(path_file)
                 image.title = images_data[idx1]['title']
                 image.data = images_data[idx1]['data']
                 image.save()
@@ -137,6 +155,9 @@ def pereval_update(request, pk):
                     image_id = images_send1[idx1 - 1]['image_id']
                 try:
                     image = Image.objects.get(pk=image_id)
+                    path_file = f"{str(os.getenv('FILE_DIR'))}{image.data.url}"
+                    if os.path.isfile(path_file):
+                        os.remove(path_file)
                     image.title = images_data[idx1]['title']
                     image.data = images_data[idx1]['data']
                     image.save()
@@ -183,37 +204,3 @@ def pereval_update(request, pk):
             pereval = update_pereval(data, pereval)
             pereval.save()
             return JsonResponse({'state': '1'})
-
-    # if request.method == 'GET':
-    #     try:
-    #         pereval = PerevalAdded.objects.get(pk=pk)
-    #         pereval_serializer = serializers.PerevalFindElement(pereval)
-    #         return JsonResponse(pereval_serializer.data)
-    #     except PerevalAdded.DoesNotExist:
-    #         return JsonResponse({'message': 'Такой записи не существует'})
-
-# @api_view(['PATCH'])
-# def perevalupdate(request, pk):
-#     if request.method == 'PATCH':
-#         try:
-#             new_data = JSONParser().parse(request)
-#             if new_data.get('status', None) == 'new':
-#                 pereval = PerevalAdded.objects.get(pk=pk)
-#                 pereval.beauty_title = new_data.get('beauty_title', None)
-#                 pereval.other_titles = new_data.get('other_titles', None)
-#                 pereval.connect = new_data.get('connect', None)
-#                 pereval.coords = new_data.get('coords', None)
-#                 pereval.winter = new_data.get('winter', None)
-#                 pereval.summer = new_data.get('summer', None)
-#                 pereval.autumn = new_data.get('autumn', None)
-#                 pereval.spring = new_data.get('spring', None)
-#                 pereval.images = new_data.get('images', None)
-#                 pereval_serializer = serializers.PerevalAddedSerializer(pereval)
-#                 if pereval_serializer.is_valid():
-#                     pereval_serializer.save()
-#                     return JsonResponse({'state': '1'})
-#             else:
-#                 return JsonResponse({'message': f'элемент имеет статус {new_data.get("status", None)}, '
-#                                                 f'элемент не может быть изменён'})
-#         except PerevalAdded.DoesNotExist:
-#             return JsonResponse({'state': '0', 'error': 'элемент не найден'})
