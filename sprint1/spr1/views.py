@@ -1,15 +1,17 @@
 import os
 import re
 from collections import OrderedDict
-from rest_framework.generics import CreateAPIView, RetrieveAPIView
+from rest_framework.generics import CreateAPIView, ListAPIView
+from rest_framework.viewsets import ViewSet
+
 from . import serializers
 from .models import PerevalAdded, PerevalImages, Image, Users, Coords
 from django.core.exceptions import ObjectDoesNotExist
 from django.http.response import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from dotenv import load_dotenv
-load_dotenv()
 
+load_dotenv()
 
 
 class PerevalAddedListAPIView(CreateAPIView):
@@ -30,6 +32,19 @@ def get_pereval(_, pk):
     resp_dict['images'] = imgs
     print(resp_dict)
     return JsonResponse(resp_dict)
+
+
+class EmailPerevalView(ListAPIView):
+    serializer_class = serializers.PerevalAddedSerializer
+
+    def get_queryset(self):
+        return PerevalAdded.objects.all()
+
+    def filter_queryset(self, queryset):
+        request = self.request
+        email = request.parser_context['kwargs']['email']
+        queryset = PerevalAdded.objects.filter(user__email=email)
+        return queryset
 
 
 def update_dict(query):
@@ -119,14 +134,14 @@ def pereval_update(request, pk):
             for idx1 in range(1, len(images_data) + 1, 1):
                 image_id = None
                 if idx1 <= len(images_send1):
-                    image_id = images_send1[idx1-1]['image_id']
+                    image_id = images_send1[idx1 - 1]['image_id']
                 try:
                     image = Image.objects.get(pk=image_id)
                     image.title = images_data[idx1]['title']
                     image.data = images_data[idx1]['data']
                     image.save()
                 except ObjectDoesNotExist:
-                    image = Image.objects.create(**images_data1[idx1-1])
+                    image = Image.objects.create(**images_data1[idx1 - 1])
                     PerevalImages.objects.create(pereval=pereval1, image=image)
 
     data['images'] = ordered_dict_image(data['images'], files['images'])
@@ -158,18 +173,16 @@ def pereval_update(request, pk):
             else:
                 for idx in range(len(images_send), (len(images_send) - len(images_data)) - 1, -1):
                     # сначала удаляем лишние картинки из БД, потом обновляем данные
-                    image = Image.objects.get(pk=images_send[idx-1]['image_id'])
+                    image = Image.objects.get(pk=images_send[idx - 1]['image_id'])
                     path_file = f"{str(os.getenv('FILE_DIR'))}{image.data.url}"
                     if os.path.isfile(path_file):
                         os.remove(path_file)
-                    Image.objects.get(pk=images_send[idx-1]['image_id']).delete()
+                    Image.objects.get(pk=images_send[idx - 1]['image_id']).delete()
                 images_send = PerevalImages.objects.filter(pereval=pk).values()
                 update_images(images_send, images_data, pereval)
             pereval = update_pereval(data, pereval)
             pereval.save()
             return JsonResponse({'state': '1'})
-
-
 
     # if request.method == 'GET':
     #     try:

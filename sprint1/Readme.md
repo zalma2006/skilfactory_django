@@ -27,3 +27,5 @@ id это идентификационный номер записи в БД
 
 ![alt text](https://github.com/zalma2006/skilfactory_django/tree/master/sprint1/readme_1.png?raw=true)
 
+
+
