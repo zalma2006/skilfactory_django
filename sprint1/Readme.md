@@ -24,4 +24,6 @@ id это идентификационный номер записи в БД
 3. отображение конкретной информации по адресу http://127.0.0.1:8000/msg/perevaladded/id 
 
 Сама схема запроса отобразиться 
-![alt text](https://github.com/zalma2006/skilfactory_django/tree/master/sprint1/для readme_md_1.png?raw=true)
+
+![alt text](https://github.com/zalma2006/skilfactory_django/tree/master/sprint1/readme_md_1.png?raw=true)
+
