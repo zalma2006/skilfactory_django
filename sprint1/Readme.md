@@ -25,5 +25,5 @@ id это идентификационный номер записи в БД
 
 Сама схема запроса отобразиться 
 
-![alt text](https://github.com/zalma2006/skilfactory_django/tree/master/sprint1/readme_md_1.png?raw=true)
+![alt text](https://github.com/zalma2006/skilfactory_django/tree/master/sprint1/readme_1.png?raw=true)
 
