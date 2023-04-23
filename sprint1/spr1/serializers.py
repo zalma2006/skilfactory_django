@@ -1,5 +1,5 @@
 from rest_framework import serializers, request
-from spr1.models import PerevalAdded, Users, Coords, Image, PerevalImage
+from spr1.models import PerevalAdded, Users, Coords, Image, PerevalImages
 
 
 class UsersSerializer(serializers.ListSerializer):
@@ -31,6 +31,7 @@ class CoordSerializer(serializers.ModelSerializer):
 
 
 class ImagesSerializer(serializers.ListField):
+
     def create(self, validated_data):
         images = [Image(**item) for item in validated_data]
         return Image.objects.bulk_create(images)
@@ -46,7 +47,7 @@ class ImageSerializer(serializers.ModelSerializer):
 class PerevalAddedSerializer(serializers.ModelSerializer):
     user = UserSerializer()
     coords = CoordSerializer()
-    per = ImagesSerializer(child=ImageSerializer())
+    images = ImagesSerializer(child=ImageSerializer())
 
     class Meta:
         model = PerevalAdded
@@ -60,34 +61,21 @@ class PerevalAddedSerializer(serializers.ModelSerializer):
                   'summer',
                   'autumn',
                   'spring',
-                  'per',
+                  'images',
+                  'status'
                   )
 
     def create(self, validated_data):
         users_data = validated_data.pop('user')
         coords_data = validated_data.pop('coords')
-        image_data = validated_data.pop('per')
+        image_data = validated_data.pop('images')
         user = Users.objects.create(**users_data)
         coords = Coords.objects.create(**coords_data)
         pereval = PerevalAdded.objects.create(user=user, coords=coords, **validated_data)
         for img in image_data:
             image = Image.objects.create(**img)
-            PerevalImage.objects.create(image=image, pereval=pereval)
+            PerevalImages.objects.create(pereval=pereval, image=image)
         return pereval
-
-    def update(self, instance, validated_data):
-        instance.title = validated_data.get('title', instance.content)
-        instance.beauty_title = validated_data.get('beauty_title', instance.content)
-        instance.other_titles = validated_data.get('other_titles', instance.content)
-        instance.connect = validated_data.get('connect', instance.content)
-        instance.coords = validated_data.get('coords', instance.created)
-        instance.winter = validated_data.get('winter', instance.created)
-        instance.summer = validated_data.get('summer', instance.created)
-        instance.autumn = validated_data.get('autumn', instance.created)
-        instance.spring = validated_data.get('spring', instance.created)
-        instance.images = validated_data.get('images', instance.created)
-        instance.save()
-        return instance
 
 
 class PerevalFindElement(serializers.ModelSerializer):
